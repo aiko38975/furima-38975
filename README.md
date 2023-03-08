@@ -22,11 +22,11 @@
 | ---------------- | ------     | ----------------------------- |
 | name             | string     | null: false                   |
 | description      | text       | null: false                   |
-| category         | string     | null: false                   |
-| condition        | string     | null: false                   |
-| shipping_fee     | integer    | null: false                   |
-| shipping_pref    | string     | null: false                   |
-| shipping_date    | string     | null: false                   |
+| category_id      | integer    | null: false                   | ActiveHash
+| condition_id     | integer    | null: false                   | ActiveHash
+| shipping_fee_id  | integer    | null: false                   | ActiveHash
+| shipping_pref_id | integer    | null: false                   | ActiveHash
+| shipping_date_id | integer    | null: false                   | ActiveHash
 | price            | integer    | null: false                   |
 | user             | references | null: false, foreign_key: true|
 ### Association
@@ -34,16 +34,16 @@
 - has_one : purchase
 
 
-## adressesテーブル（配送先住所）
+## addressesテーブル（配送先住所）
 
 | Column           | Type       | Options                       |
 | ---------------- | ------     | ----------------------------- |
-| postal_code      | integer    | null: false                   |
-| prefecture       | string     | null: false                   |
+| postal_code      | string     | null: false                   |
+| shipping_pref_id | integer    | null: false                   | ActiveHash
 | city             | string     | null: false                   |
 | street           | string     | null: false                   |
-| building         | string     | null: false                   |
-| phone_number     | integer    | null: false                   |
+| building         | string     |                               |
+| phone_number     | string     | null: false                   |
 | purchase         | references | null: false, foreign_key: true|
 ## Association
 - belongs_to : purchase
@@ -59,4 +59,4 @@
 ## Association
 - belongs_to : user
 - belongs_to : item
-- belongs_to : address
+- has_one    : address
