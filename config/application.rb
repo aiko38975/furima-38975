@@ -17,3 +17,4 @@ module Furima38975
     # the framework and any gems in your application.
   end
 end
+
