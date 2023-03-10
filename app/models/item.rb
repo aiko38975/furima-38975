@@ -8,5 +8,5 @@ class Item < ApplicationRecord
   validates :shipping_date_id, presence: true
   validates :price, presence: true
 
-  belongs_to : user
+  belongs_to :user
 end
