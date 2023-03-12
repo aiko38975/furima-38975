@@ -19,9 +19,9 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
-  belongs_to :condition
-  belongs_to :shipping_fee
-  belongs_to :shipping_pref
-  belongs_to :shipping_date
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :shipping_fee
+  belongs_to_active_hash :shipping_pref
+  belongs_to_active_hash :shipping_date
 end
