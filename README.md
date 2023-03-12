@@ -12,8 +12,8 @@
 | last_name_reading     | string    | null: false                |
 | birthday              | date      | null: false                |
 ### Association
-- has_many : items
-- has_many : purchases
+- has_many :items
+- has_many :purchases
 
 
 ## itemsテーブル（出品商品情報）  imageは記載しない
@@ -30,8 +30,8 @@
 | price            | integer    | null: false                   |
 | user             | references | null: false, foreign_key: true|
 ### Association
-- belongs_to : user
-- has_one : purchase
+- belongs_to :user
+- has_one :purchase
 
 
 ## addressesテーブル（配送先住所）
@@ -46,7 +46,7 @@
 | phone_number     | string     | null: false                   |
 | purchase         | references | null: false, foreign_key: true|
 ## Association
-- belongs_to : purchase
+- belongs_to :purchase
 
 
 
@@ -57,6 +57,6 @@
 | user             | references | null: false, foreign_key: true|
 | item             | references | null: false, foreign_key: true|
 ## Association
-- belongs_to : user
-- belongs_to : item
-- has_one    : address
+- belongs_to :user
+- belongs_to :item
+- has_one :address
