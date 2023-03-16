@@ -16,8 +16,8 @@ class PurchasesController < ApplicationController
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: Item.find(params[:item_id]).price,
-        card: purchase_params[:token], 
-        currency: 'jpy' 
+        card: purchase_params[:token],
+        currency: 'jpy'
       )
       @purchase_address.save
       redirect_to root_path
@@ -28,7 +28,7 @@ class PurchasesController < ApplicationController
 
   private
 
-  def purchase_params  
+  def purchase_params
     params.require(:purchase_address).permit(
       :postal_code,
       :shipping_pref_id,
