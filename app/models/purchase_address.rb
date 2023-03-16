@@ -23,6 +23,6 @@ class PurchaseAddress
       street: street,
       building: building,
       phone_number: phone_number,
-      purchase_id: purchase.id )
+      purchase_id: purchase.id)
   end
 end

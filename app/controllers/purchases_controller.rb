@@ -1,11 +1,13 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @item = Item.find(params[:item_id])
+    unless user_signed_in? && @item.purchase.blank? && current_user.id != @item.user_id
+      redirect_to root_path
+    end
     @purchase_address = PurchaseAddress.new
   end
-
-  
 
   def create
     @item = Item.find(params[:item_id])
@@ -34,6 +36,6 @@ class PurchasesController < ApplicationController
       :street,
       :building,
       :phone_number
-    ).merge(user_id: current_user.id, item_id: params[:item_id],token: params[:token])
+    ).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 end
