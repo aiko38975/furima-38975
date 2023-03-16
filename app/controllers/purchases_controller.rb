@@ -1,8 +1,8 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     unless user_signed_in? && @item.purchase.blank? && current_user.id != @item.user_id
       redirect_to root_path
     end
@@ -10,7 +10,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
@@ -37,5 +36,9 @@ class PurchasesController < ApplicationController
       :building,
       :phone_number
     ).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
