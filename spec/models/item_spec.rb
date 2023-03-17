@@ -35,7 +35,7 @@ RSpec.describe Item, type: :model do
       it 'category_idが1を選択しても出品できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category を選択してください。")
       end
       it 'condition_idが空では出品できない' do
         @item.condition_id = ''
@@ -45,7 +45,7 @@ RSpec.describe Item, type: :model do
       it 'condition_idが1を選択しても出品できない' do
         @item.condition_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank")
+        expect(@item.errors.full_messages).to include("Condition を選択してください。")
       end
       it 'shipping_fee_idが空では出品できない' do
         @item.shipping_fee_id = ''
@@ -55,7 +55,7 @@ RSpec.describe Item, type: :model do
       it 'shipping_fee_idが1を選択しても出品できない' do
         @item.shipping_fee_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping fee を選択してください。")
       end
       it 'shipping_pref_idが空では出品できない' do
         @item.shipping_pref_id = ''
@@ -65,7 +65,7 @@ RSpec.describe Item, type: :model do
       it 'shipping_pref_idが1を選択しても出品できない' do
         @item.shipping_pref_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping pref can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping pref を選択してください。")
       end
       it 'shipping_date_idが空では出品できない' do
         @item.shipping_date_id = ''
@@ -75,7 +75,7 @@ RSpec.describe Item, type: :model do
       it 'shipping_date_idが1を選択しても出品できない' do
         @item.shipping_date_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping date can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping date を選択してください。")
       end
       it 'priceが空では出品できない' do
         @item.price = ''

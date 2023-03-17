@@ -42,12 +42,12 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'shipping_pref_idが空では保存できない' do
         @purchase_address.shipping_pref_id = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Shipping pref を入力してください。")
+        expect(@purchase_address.errors.full_messages).to include("Shipping pref を選択してください。")
       end
       it 'shipping_pref_idが1を選択しても保存できない' do
         @purchase_address.shipping_pref_id = '1'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Shipping pref を入力してください。")
+        expect(@purchase_address.errors.full_messages).to include("Shipping pref を選択してください。")
       end
       it 'cityが空だと保存できないこと' do
         @purchase_address.city = ''
@@ -67,17 +67,17 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberが全角数字だと保存できないこと' do
         @purchase_address.phone_number = '０９０９０００９０００'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@purchase_address.errors.full_messages).to include('Phone number はハイフンなしの半角数字で入力してください。')
       end
       it 'phone_numberが9桁だと保存できないこと' do
         @purchase_address.phone_number = '123456789'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@purchase_address.errors.full_messages).to include('Phone number はハイフンなしの半角数字で入力してください。')
       end
       it 'phone_numberが12桁だと保存できないこと' do
         @purchase_address.phone_number = '123456789111'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@purchase_address.errors.full_messages).to include('Phone number はハイフンなしの半角数字で入力してください。')
       end
       it 'user_idが紐付いていなければ購入できない' do
         @purchase_address.user_id= nil
