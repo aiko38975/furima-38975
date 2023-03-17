@@ -27,27 +27,27 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'postal_codeが空だと保存できないこと' do
         @purchase_address.postal_code = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Postal code can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("Postal code はハイフンを含んで半角数字で入力してください。")
       end
       it 'postal_codeがハイフンがないと保存できないこと' do
         @purchase_address.postal_code = '1001000'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@purchase_address.errors.full_messages).to include('Postal code はハイフンを含んで半角数字で入力してください。')
       end
       it 'postal_codeが全角だと保存できないこと' do
         @purchase_address.postal_code = '１００ー１０００'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@purchase_address.errors.full_messages).to include('Postal code はハイフンを含んで半角数字で入力してください。')
       end
       it 'shipping_pref_idが空では保存できない' do
         @purchase_address.shipping_pref_id = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Shipping pref can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("Shipping pref を入力してください。")
       end
       it 'shipping_pref_idが1を選択しても保存できない' do
         @purchase_address.shipping_pref_id = '1'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Shipping pref can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("Shipping pref を入力してください。")
       end
       it 'cityが空だと保存できないこと' do
         @purchase_address.city = ''
