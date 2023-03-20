@@ -1,4 +1,4 @@
-lock "~> 3.17.2"
+lock "3.17.2"
 
 set :application, "furima-38975"
 set :repo_url, "https://github.com/aiko38975/furima-38975"
